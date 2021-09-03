@@ -16,7 +16,7 @@ def user_similarities(user, sims, neighborhood):
         i += 1
         if i >= (neighborhood+neighborhood/1.5):
             break
-    print(f'\n{user}\n\n{tabulate(similarities,tablefmt="plain", numalign="center",floatfmt=".3f")}')
+    print(f'\n{user}\n\n{tabulate(similarities,tablefmt="plain", numalign="decimal",floatfmt=".5f")}')
 
 
 def empty_ratings():
