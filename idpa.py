@@ -12,8 +12,7 @@ def main():
         similarities = format_data.get_all_simularties_of_user(
             deepcopy(user), deepcopy(data))
         printer.user_similarities(user[0], similarities)
-    for user in data:
-        format_data.get_empty_ratings(user, movies)
+        format_data.get_empty_ratings(user, movies, similarities, data)
 
 
 if __name__ == '__main__':

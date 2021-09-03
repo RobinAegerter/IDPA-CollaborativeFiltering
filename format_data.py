@@ -1,4 +1,5 @@
 import calc
+import operator
 
 
 def normalize(data):
@@ -35,15 +36,14 @@ def get_all_simularties_of_user(user, data):
     similarities = {}
     for compared_user in data:
         compared_user = replace_none_with_zero(compared_user)
-        if compared_user[0] is user[0]:
-            continue
         similarities[compared_user[0]] = calc.cos_sim(
             user[1:], compared_user[1:])
-    return similarities
+    return dict(sorted(similarities.items(), key=operator.itemgetter(1), reverse=True))
 
 
-def get_empty_ratings(user, movies):
-    print("\n" + user[0])
+def get_empty_ratings(user, movies, sims, data):
+    print('Hasn\'t seen:')
     for i in range(len(user)):
         if user[i] is None:
-            print(f'Hasn\'t seen {movies[i]}')
+            rating = calc.fixed_formula(sims, 4, data, i)
+            print(f'    {movies[i]}: {rating}')
