@@ -15,10 +15,8 @@ def get_ratings(path):
         filtered_row = [row[1]]
         for i in range(3, len(row)):
             filtered_row.append(get_filtered_value(row[i]))
-        if str(filtered_row).count('0') <= 5:
+        if str(filtered_row).count('0') <= 13:
             filtered.append(filtered_row)
-            print(filtered_row)
-    print(f'Length: {len(filtered)}\n')
     return filtered
 
 

@@ -22,8 +22,6 @@ def normalize(data):
             else:
                 meaned_el.append(None)
         ratings.append(meaned_el)
-        print(meaned_el)
-    print(f'Length: {len(ratings)}\n')
     return ratings
 
 
@@ -49,9 +47,9 @@ def get_all_simularties_of_user(user, data):
     return dict(sorted(similarities.items(), key=operator.itemgetter(1), reverse=True))
 
 
-def get_empty_ratings(user, movies, sims, data):
+def get_empty_ratings(user, movies, sims, data, n):
     print(f'\nAverage Rating: {avarages[user[0]]}\n\nHasn\'t seen:')
     for i in range(len(user)):
         if user[i] is None:
-            rating = denormalize(calc.fixed_formula(sims, 1, data, i), user[0])
+            rating = denormalize(calc.fixed_formula(sims, n, data, i), user[0])
             print(f'    {movies[i]}: {rating}')
