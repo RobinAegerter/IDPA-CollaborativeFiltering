@@ -1,23 +1,30 @@
 import pandas as pd
 
 
-def getFilteredValue(value):
+def get_filtered_value(value):
     if value.isnumeric():
         return int(value)
     else:
         return 0
 
 
-def get(path):
+def get_ratings(path):
     data = pd.read_csv(path).values.tolist()
-
     filtered = []
     for row in data:
         filtered_row = [row[1]]
         for i in range(3, len(row)):
-            filtered_row.append(getFilteredValue(row[i]))
+            filtered_row.append(get_filtered_value(row[i]))
         if str(filtered_row).count('0') <= 5:
             filtered.append(filtered_row)
             print(filtered_row)
     print(f'Length: {len(filtered)}\n')
     return filtered
+
+
+def get_movies(path):
+    data = pd.read_csv(path).keys()
+    movies = ["Names"]
+    for i in range(3, len(data)):
+        movies.append(data[i][16:-26])
+    return movies

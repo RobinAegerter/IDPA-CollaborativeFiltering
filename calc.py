@@ -14,12 +14,3 @@ def fixed_formula(similarities, n, ratings, i):
     for y in range(n):
         counter += similarities[y]
     return counter/denominator
-
-
-def get_all_simularties_of_user(user, data):
-    similarities = []
-    for compared_user in data:
-        if compared_user is user:
-            continue
-        similarities.append(cos_sim(user[1:], compared_user[1:]))
-    return similarities
