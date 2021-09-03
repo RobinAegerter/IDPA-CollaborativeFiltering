@@ -1,6 +1,8 @@
 import calc
 import operator
 
+avarages = {}
+
 
 def normalize(data):
     ratings = []
@@ -11,6 +13,7 @@ def normalize(data):
             if rating > 0:
                 dataPoints.append(rating)
         mean = sum(int_row) / len(dataPoints)
+        avarages[row[0]] = mean
         meaned_el = []
         meaned_el.append(row[0])
         for rating in int_row:
@@ -22,6 +25,11 @@ def normalize(data):
         print(meaned_el)
     print(f'Length: {len(ratings)}\n')
     return ratings
+
+
+def denormalize(rating, user):
+
+    return rating + avarages[user]
 
 
 def replace_none_with_zero(ratings):
@@ -42,8 +50,8 @@ def get_all_simularties_of_user(user, data):
 
 
 def get_empty_ratings(user, movies, sims, data):
-    print('Hasn\'t seen:')
+    print(f'\nAverage Rating: {avarages[user[0]]}\n\nHasn\'t seen:')
     for i in range(len(user)):
         if user[i] is None:
-            rating = calc.fixed_formula(sims, 4, data, i)
+            rating = denormalize(calc.fixed_formula(sims, 1, data, i), user[0])
             print(f'    {movies[i]}: {rating}')

@@ -16,7 +16,7 @@ def fixed_formula(similarities, n, ratings, i):
                 valid_keys.append(key)
                 valid_ratings.append(rating[i])
                 n -= 1
-        if n <= 0:
+        if n <= 0 or similarities[key] < 0:
             break
     counter = 0
     for i in range(len(valid_keys)):
