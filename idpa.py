@@ -7,8 +7,8 @@ NEIGHBORHOOD = 7
 
 
 def main():
-    data = data_extraktion.get_ratings('./Bewertung.csv')
-    movies = data_extraktion.get_movies('./Bewertung.csv')
+    data = data_extraktion.get_ratings('./ratings.csv')
+    movies = data_extraktion.get_movies('./ratings.csv')
     printer.table(movies, data, "Filtered Data")
     data = format_data.normalize(data)
     printer.table(movies, data, "Normalized Data")
@@ -18,7 +18,6 @@ def main():
         printer.user_similarities(user[0], similarities, NEIGHBORHOOD)
         format_data.get_empty_ratings(
             user, movies, similarities, data, NEIGHBORHOOD)
-        printer.empty_ratings()
 
 
 if __name__ == '__main__':

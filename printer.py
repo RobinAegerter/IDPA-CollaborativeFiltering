@@ -18,6 +18,3 @@ def user_similarities(user, sims, neighborhood):
             break
     print(f'\n{user}\n\n{tabulate(similarities,tablefmt="plain", numalign="decimal",floatfmt=".5f")}')
 
-
-def empty_ratings():
-    print("Hi")
