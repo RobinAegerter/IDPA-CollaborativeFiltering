@@ -22,6 +22,6 @@ def fixed_formula(similarities, n, ratings, i):
     for i in range(len(valid_keys)):
         counter += similarities[valid_keys[i]] * valid_ratings[i]
     denominator = 0
-    for rating in valid_ratings:
-        denominator += rating
+    for key in valid_keys:
+        denominator += similarities[key]
     return counter/denominator
